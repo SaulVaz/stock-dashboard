@@ -8,6 +8,7 @@ import { useCompanyNews } from "@/hooks/useCompanyNews";
 import { PredictionCard } from "@/components/prediction/PredictionCard";
 import { ROICalculator } from "@/components/stock/ROICalculator";
 import { useStockQuote } from "@/hooks/useStockQuote";
+import { NewsItem } from "@/types/news";
 
 interface StockPageProps {
   params: Promise<{ symbol: string }>;
@@ -30,7 +31,7 @@ function StockNews({ symbol }: { symbol: string }) {
         </div>
       ) : news && news.length > 0 ? (
         <div className="flex flex-col gap-3">
-          {news.slice(0, 8).map((item) => (
+          {news.slice(0, 8).map((item: NewsItem) => (
             <NewsCard key={item.id} news={item} />
           ))}
         </div>
