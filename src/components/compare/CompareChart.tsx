@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { createChart, ColorType, LineSeries } from "lightweight-charts";
+import { createChart, ColorType, LineSeries,  type Time} from "lightweight-charts";
 
 const COLORS = ["#6366f1", "#22c55e", "#f59e0b", "#ef4444"];
 
@@ -40,7 +40,7 @@ export function CompareChart({ symbols, data }: CompareChartProps) {
       if (!symbolData?.t) return;
 
       const lineData = symbolData.t.map((time, j) => ({
-        time: time as number,
+        time: time as Time,
         value: symbolData.c[j],
       }));
 
