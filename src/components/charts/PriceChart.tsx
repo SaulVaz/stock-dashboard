@@ -7,6 +7,7 @@ import {
   AreaSeries,
   LineSeries,
   HistogramSeries,
+  type Time,
 } from "lightweight-charts";
 import { StockCandle } from "@/types/stock";
 
@@ -65,7 +66,7 @@ export function PriceChart({
 
     if (type === "candlestick") {
       const candleData = data.t.map((time, i) => ({
-        time: time as number,
+        time: time as Time,
         open: data.o[i],
         high: data.h[i],
         low: data.l[i],
@@ -83,7 +84,7 @@ export function PriceChart({
       candleSeries.setData(candleData);
     } else {
       const areaData = data.t.map((time, i) => ({
-        time: time as number,
+        time: time as Time,
         value: data.c[i],
       }));
 
@@ -101,10 +102,10 @@ export function PriceChart({
       const maValues = calculateMA(data.c, maPeriod);
       const maData = data.t
         .map((time, i) => ({
-          time: time as number,
+          time: time as Time,
           value: maValues[i],
         }))
-        .filter((d) => d.value !== null) as { time: number; value: number }[];
+        .filter((d) => d.value !== null) as { time: Time ; value: number }[];
 
       const maSeries = chart.addSeries(LineSeries, {
         color: "#f59e0b",
@@ -161,7 +162,7 @@ export function PriceChart({
     });
 
     const volumeData = data.t.map((time, i) => ({
-      time: time as number,
+      time: time as Time,
       value: data.v[i],
       color: data.c[i] >= data.o[i]
         ? "rgba(34,197,94,0.5)"
