@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { createChart, ColorType, AreaSeries } from "lightweight-charts";
+import { createChart, ColorType, AreaSeries, type Time } from "lightweight-charts";
 import { useStockCandles } from "@/hooks/useStockCandles";
 
 interface SparklineProps {
@@ -42,7 +42,7 @@ function SparklineChart({
     });
 
     const areaData = data.t.map((time, i) => ({
-      time: time as number,
+      time: time as Time,
       value: data.c[i],
     }));
 
