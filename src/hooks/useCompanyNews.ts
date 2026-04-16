@@ -1,3 +1,4 @@
+import { NewsItem } from "@/types/news";
 import { useQuery } from "@tanstack/react-query";
 
 function getFormattedDate(daysAgo: number): string {
@@ -23,7 +24,7 @@ async function fetchNews(symbol?: string) {
 }
 
 export function useCompanyNews(symbol?: string) {
-  return useQuery({
+  return useQuery<NewsItem[]>({
     queryKey: ["news", symbol ?? "market"],
     queryFn: () => fetchNews(symbol),
     staleTime: 5 * 60 * 1000,
