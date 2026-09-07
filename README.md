@@ -1,4 +1,4 @@
-# StockDash 📈
+# StockDash
 
 Dashboard de mercado de valores en tiempo real construido con Next.js, TypeScript y Tailwind CSS. Rastrea tus acciones favoritas, analiza tendencias de precios, compara activos y mantente al día con las noticias financieras — todo en un solo lugar.
 
